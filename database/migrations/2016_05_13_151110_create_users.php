@@ -13,11 +13,11 @@ class CreateUsers extends Migration
     public function up()
     {
         Schema::create('users', function($deerfieldUsers) {
-            $thePainting->increments('id');
-            $thePainting->string('users');
-            $thePainting->string('password');
-            $thePainting->string('email');
-            $thePainting->timestamps();
+            $deerfieldUsers->increments('id');
+            $deerfieldUsers->string('users');
+            $deerfieldUsers->string('password');
+            $deerfieldUsers->string('email');
+            $deerfieldUsers->timestamps();
 
         });
     }
