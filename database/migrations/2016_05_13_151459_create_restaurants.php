@@ -12,7 +12,15 @@ class CreateRestaurants extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('restaurants', function($deerfieldRestaurants) {
+            $deerfieldRestaurants->increments('id');
+            $deerfieldRestaurants->string('restaurantsName', 250);
+            $deerfieldRestaurants->string('restaurantsAddress',500)->nullable;
+            $deerfieldRestaurants->string('restaurantsPhone')->nullable;
+            $deerfieldRestaurants->string('restaurantsWebsite', 500)->nullable;
+            $deerfieldRestaurants->text('description',500)->nullable;
+            $deerfieldRestaurants->string('image',500)->nullable;
+        });
     }
 
     /**
@@ -22,6 +30,6 @@ class CreateRestaurants extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('restaurants');
     }
 }

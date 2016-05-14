@@ -12,11 +12,14 @@ class CreateUsers extends Migration
      */
     public function up()
     {
-        Schema::create('users', function($deerfieldUsers) {
+        Schema::create('deerfieldUsers', function($deerfieldUsers) {
             $deerfieldUsers->increments('id');
-            $deerfieldUsers->string('users');
-            $deerfieldUsers->string('password');
-            $deerfieldUsers->string('email');
+            $deerfieldUsers->string('username', 20)->unique;
+            $deerfieldUsers->string('firstname',250)->nullable;
+            $deerfieldUsers->string('lastname',250)->nullable;
+            $deerfieldUsers->string('password', 20);
+            $deerfieldUsers->string('email',100)->unique;
+            $deerfieldUsers->rememberToken();
             $deerfieldUsers->timestamps();
 
         });
@@ -29,6 +32,6 @@ class CreateUsers extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('deerfieldUsers');
     }
 }

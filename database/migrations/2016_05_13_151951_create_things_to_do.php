@@ -12,7 +12,15 @@ class CreateThingsToDo extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('thingsToDo', function($deerfieldThingsToDo) {
+            $deerfieldThingsToDo->increments('id');
+            $deerfieldThingsToDo->string('thingstodoName', 250);
+            $deerfieldThingsToDo->string('thingstodoAddress',500)->nullable;
+            $deerfieldThingsToDo->string('thingstodoPhone')->nullable;
+            $deerfieldThingsToDo->string('thingstodoWebsite', 500)->nullable;
+            $deerfieldThingsToDo->text('description',500)->nullable;
+            $deerfieldThingsToDo->string('image',500)->nullable;
+        });
     }
 
     /**
@@ -22,6 +30,6 @@ class CreateThingsToDo extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('thingsToDo');
     }
 }
