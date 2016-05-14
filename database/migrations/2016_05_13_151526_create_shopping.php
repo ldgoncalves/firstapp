@@ -12,7 +12,15 @@ class CreateShopping extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('shopping', function($deerfieldShopping) {
+            $deerfieldShopping->increments('id');
+            $deerfieldShopping->string('shoppingName', 250);
+            $deerfieldShopping->string('shoppingAddress',500)->nullable;
+            $deerfieldShopping->string('shoppingPhone')->nullable;
+            $deerfieldShopping->string('shoppingWebsite', 500)->nullable;
+            $deerfieldShopping->text('description',500)->nullable;
+            $deerfieldShopping->string('image',500)->nullable;
+        });
     }
 
     /**
@@ -22,6 +30,6 @@ class CreateShopping extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('shopping');
     }
 }

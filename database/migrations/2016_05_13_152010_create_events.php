@@ -12,7 +12,16 @@ class CreateEvents extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('events', function($deerfieldEvents) {
+            $deerfieldEvents->increments('id');
+            $deerfieldEvents->string('eventName', 250);
+            $deerfieldEvents->datetime('datetime');
+            $deerfieldEvents->string('eventAddress',500)->nullable;
+            $deerfieldEvents->string('eventPhone')->nullable;
+            $deerfieldEvents->string('eventWebsite', 500)->nullable;
+            $deerfieldEvents->text('description',500)->nullable;
+
+        });
     }
 
     /**
@@ -22,6 +31,6 @@ class CreateEvents extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('events');
     }
 }
