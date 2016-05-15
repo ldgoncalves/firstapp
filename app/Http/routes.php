@@ -10,55 +10,46 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-use App\Painting; //need to add to route Eloquent model
+use App\deerfieldUser;
+use App\Hotel;
 
-Route::get('/', function () {
-    /* //creating tables within database
-    Schema::create('art', function($newtable){
-       $newtable->increments('id');
-        $newtable->string('artist');
-        $newtable->string('title', 500);
-        $newtable->text('description');
-        $newtable->date('created');
-        $newtable->date('exhibition_date');
-        $newtable->timestamps();
-    });*/
 
-//    Schema::table('art', function($newtable){
-//        $newtable->boolean('alumni');
-//        $newtable->dropColumn('exhibition_date');
-//    });
+Route::get('/', 'HomeController@index');
 
-//   $painting = new Painting;
-//     $painting->title = 'Do No Wrong';
-//     $painting->artist = 'D. DoRight';
-//     $painting->year = 2014;
-//     $painting->save();
+Route::get('hotel', 'HotelController@index');
 
-//     return view('welcome');
+Route::get('restaurant', 'RestaurantController@index');
 
-    $painting = Painting::find(1);
-    $painting->title= 'Do No Wrong - Just Do Right';
-    $painting->save();
-    return $painting->title;
-
-//    Schema::table('paintings', function($thePainting){
-//        $thePainting->renameColumn('ids', 'id');
-//    });
+Route::get('thingstodo', function() {
+    return view ('thingstodo');
 });
 
-Route::get('about', function(){
-   return 'About content goes here.';
+Route::get('events', function() {
+    return view ('events');
 });
 
-Route::get('about/directions', function(){
-    return 'Directions go here.';
+Route::get('shopping', function() {
+    return view ('shopping');
 });
 
-Route::get('about/{theSubject}', function($theSubject){
-    return $theSubject.' content goes here.';
-});
 
-Route::get('about/classes/{theSubject}', function($theSubject){
-    return "Content about {$theSubject} classes goes here."; //If your passing a param within a string use double quotes.
-});
+
+
+
+
+//Route::get('about', function(){
+//   //return 'About content goes here.';
+//    return view ('about');
+//});
+//
+//Route::get('about/directions', function(){
+//    return 'Directions go here.';
+//});
+//
+//Route::get('about/{theSubject}', function($theSubject){
+//    return $theSubject.' content goes here.';
+//});
+//
+//Route::get('about/classes/{theSubject}', function($theSubject){
+//    return "Content about {$theSubject} classes goes here."; //If your passing a param within a string use double quotes.
+//});

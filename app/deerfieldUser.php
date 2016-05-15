@@ -1,10 +1,16 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: luanagoncalves
+ * Date: 5/14/16
+ * Time: 7:41 PM
+ */
 
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class deerfieldUser extends Authenticatable
 {
     /**
      * The attributes that are mass assignable.
