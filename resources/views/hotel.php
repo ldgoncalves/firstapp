@@ -6,7 +6,6 @@ include('header.php');
 
 <?php
 
-echo 'loloasdh';
     foreach($hotels as $hotel) {
         echo '<h2>' . $hotel->hotelName . '</h2>';
         echo '<p> Address: ' . $hotel->hotelAddress . '</p>';
