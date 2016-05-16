@@ -10,7 +10,7 @@ namespace App; // needs namespace
 
 use Illuminate\Database\Eloquent\Model; //to call for Eloquent model
 
-class Events extends Model
+class Event extends Model
 {
     public $timestamps = false;
 }

@@ -29,4 +29,6 @@ class deerfieldUser extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public $table = 'deerfieldUsers';
 }

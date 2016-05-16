@@ -16,40 +16,29 @@ use App\Hotel;
 
 Route::get('/', 'HomeController@index');
 
+Route::get('/home', 'HomeController@index');
+
 Route::get('hotel', 'HotelController@index');
 
 Route::get('restaurant', 'RestaurantController@index');
 
-Route::get('thingstodo', function() {
-    return view ('thingstodo');
-});
+Route::get('thingstodo', 'ThingsToDoController@index');
 
-Route::get('events', function() {
-    return view ('events');
-});
+Route::get('events', 'EventController@index');
 
-Route::get('shopping', function() {
-    return view ('shopping');
-});
+Route::get('shopping', 'ShoppingController@index');
 
+Route::get('register', 'Auth\AuthController@get_register');
 
+Route::post('register', 'Auth\AuthController@register');
 
+Route::get('login', 'Auth\AuthController@get_login');
 
+Route::post('login', 'Auth\AuthController@login');
 
+Route::get('logout', 'Auth\AuthController@logout');
 
-//Route::get('about', function(){
-//   //return 'About content goes here.';
-//    return view ('about');
-//});
-//
-//Route::get('about/directions', function(){
-//    return 'Directions go here.';
-//});
-//
-//Route::get('about/{theSubject}', function($theSubject){
-//    return $theSubject.' content goes here.';
-//});
-//
-//Route::get('about/classes/{theSubject}', function($theSubject){
-//    return "Content about {$theSubject} classes goes here."; //If your passing a param within a string use double quotes.
-//});
+Route::post('query', 'QueryController@search');
+
+//Route::auth();
+

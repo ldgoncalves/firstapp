@@ -14,11 +14,11 @@ class CreateUsers extends Migration
     {
         Schema::create('deerfieldUsers', function($deerfieldUsers) {
             $deerfieldUsers->increments('id');
-            $deerfieldUsers->string('username', 20)->unique;
+            $deerfieldUsers->string('username', 20)->unique();
             $deerfieldUsers->string('firstname',250)->nullable;
             $deerfieldUsers->string('lastname',250)->nullable;
             $deerfieldUsers->string('password', 20);
-            $deerfieldUsers->string('email',100)->unique;
+            $deerfieldUsers->string('email',100)->unique();
             $deerfieldUsers->rememberToken();
             $deerfieldUsers->timestamps();
 

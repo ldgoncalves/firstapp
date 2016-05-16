@@ -13,4 +13,5 @@ use Illuminate\Database\Eloquent\Model; //to call for Eloquent model
 class Shopping extends Model
 {
     public $timestamps = false;
+    public $table = 'shopping';
 }

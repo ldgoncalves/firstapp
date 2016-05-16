@@ -1,21 +1,29 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: luanagoncalves
- * Date: 5/15/16
- * Time: 3:27 PM
- */
 
 namespace App\Http\Controllers;
 
-use App\thingsToDo;
+use App\Http\Requests;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(){
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //$this->middleware('auth');
+    }
 
-        $thingsToDo = thingsToDo::all();
-
-        return view('home')->with('thingsToDo', $thingsToDo);
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('home');
     }
 }

@@ -1,11 +1,8 @@
-<?php
-include('header.php');
-?>
-
+@extends('layouts.app')
+@section('content')
 <h1>Hotels</h1>
 
 <?php
-
     foreach($hotels as $hotel) {
         echo '<h2>' . $hotel->hotelName . '</h2>';
         echo '<p> Address: ' . $hotel->hotelAddress . '</p>';
@@ -16,6 +13,4 @@ include('header.php');
 
 ?>
 
-<?php
-include('footer.php');
-?>
+@endsection

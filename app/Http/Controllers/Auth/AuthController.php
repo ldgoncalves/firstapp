@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\deerfieldUser;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Support\Facades\Input;
+
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -40,33 +44,39 @@ class AuthController extends Controller
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
+
+    public function get_register() {
+        return view('auth/register');
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
+    public function get_login(){
+        return view('auth/login');
+    }
+
+    public function register()
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        $user = new deerfieldUser;
+        $user->firstname = Input::get('firstname');
+        $user->lastname = Input::get('lastname');
+        $user->email = Input::get('email');
+        $user->username = Input::get('username');
+        $user->password = Hash::make(Input::get('password'));
+        $user->save();
+        return redirect('/');
+    }
+
+    public function login(){
+        if (Auth::attempt(['username' => Input::get('username'), 'password' => Input::get('password')])) {
+            // Authentication passed...
+            return redirect('/');
+        }
+        return 'Login incorrect!!';
+    }
+
+    public function logout(){
+        Auth::logout();
+
+        return redirect('/');
     }
 }
+

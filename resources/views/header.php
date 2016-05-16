@@ -14,3 +14,9 @@
     <!--    <link rel="stylesheet" type="text/css" href="public/css/main.css">-->
 </head>
 <body>
+<a href="/register">Register</a> |
+<a href="#">Login</a>
+
+<?php
+include('footer.php');
+?>
