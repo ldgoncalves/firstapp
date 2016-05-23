@@ -8,14 +8,14 @@
 
 namespace App\Http\Controllers;
 
-use App\thingsToDo;
+use App\Thingstodo;
 
 class ThingsToDoController extends Controller
 {
     public function index(){
 
-        $thingsToDo = thingsToDo::all();
+        $thingstodo = Thingstodo::all();
 
-        return view('thingstodo')->with('thingsToDo', $thingsToDo);
+        return view('thingstodo')->with('thingstodo', $thingstodo);
     }
 }

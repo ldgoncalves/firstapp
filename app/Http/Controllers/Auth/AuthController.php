@@ -70,7 +70,7 @@ class AuthController extends Controller
             // Authentication passed...
             return redirect('/');
         }
-        return 'Login incorrect!!';
+        return 'Login incorrect!';
     }
 
     public function logout(){

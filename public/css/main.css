@@ -1,4 +1,166 @@
-.highlight {
-	border: solid 2px red;	
+/* Global */
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
+body {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: #363636;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+
+}
+
+.custom-container{
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    background-color: rgba(229, 211, 189, .50);
+}
+
+
+/* Header */
+header {
+    height: 430px;
+    background: url(../images/sunrise1200.jpg) no-repeat center top;
+    position: relative;
+    margin-bottom: 0;
+    line-height: 1.25;
+    text-align: center;
+
+}
+
+header div.hero {
+    position: relative;
+    background-color: rgba(0, 187, 214, .40);
+}
+
+.jumbotron {
+    margin-bottom: 0px;
+    background-color: #fff;
+    color: #fff;
+}
+
+
+/* Navbar and Toggle Styling */
+
+button.navbar-toggle.collapsed {
+    background-color: #00bbd6 ;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: rgba(0, 187, 214, .50);
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: rgba(0, 187, 214, .50);
+}
+
+.navbar-default  .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+
+.fa-btn {
+    margin-right: 6px;
+}
+
+/* Section Styling */
+
+section {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+section::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+section.search {
+    height: 50px;
+}
+
+section.menu {
+    height: auto;
+    padding-top: 30px;
+}
+/* Search Form Styling */
+
+#custom-search-form {
+    margin: 1% 0 0 0 ;
+    padding: 0;
+}
+
+#custom-search-form .search-query {
+    padding-right: 3px;
+    padding-right: 4px \9;
+    padding-left: 3px;
+    padding-left: 4px \9;
+    margin-bottom: 0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    width: 350px;
+}
+
+#custom-search-form button {
+    border: 0;
+    background: none;
+    /** belows styles are working good */
+    padding: 2px 5px;
+    margin-top: 2px;
+    position: relative;
+    left: -28px;
+    /* IE7-8 doesn't have border-radius, so don't indent the padding */
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    color: #363636;
+}
+
+.search-query:focus + button {
+    z-index: 3;
+}
+
+/* Homepage Thumbnail Styling */
+
+.thumbnail {
+    color: #363636;
+}
+
+.thumbnail>img {
+    margin:auto;
+}
+
+/* Hotels Page */
+
+.listing h3 {
+    margin: 0 0 7px 0;
+}
+
+.listing {
+    padding: 20px;
+}
+
+.listing>img.img-responsive {
+    max-width: 25%;
+    margin: 0 10px 10px 0;
+
+}
+
+
+/* Screen sizes for media */
+
+@media screen and (max-width: 767px) {
+    .custom-container {
+        padding: 5px;
+    }
+
+}

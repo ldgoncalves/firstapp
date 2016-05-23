@@ -2,16 +2,15 @@
 /**
  * Created by PhpStorm.
  * User: luanagoncalves
- * Date: 5/14/16
- * Time: 7:42 PM
+ * Date: 5/20/16
+ * Time: 11:21 AM
  */
 
-namespace App; // needs namespace
+namespace App;
 
-use Illuminate\Database\Eloquent\Model; //to call for Eloquent model
+use Illuminate\Database\Eloquent\Model;
 
-class thingsToDo extends Model
+class Thingstodo extends Model
 {
-    public $timestamps = false;
-    public $table = 'thingsToDo';
+
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateArt extends Migration
+class CreateEventsTrip extends Migration
 {
     /**
      * Run the migrations.
@@ -12,17 +12,11 @@ class CreateArt extends Migration
      */
     public function up()
     {
-        Schema::create('art2', function($newtable)
-        {
+        Schema::create('eventTrip', function($newtable) {
             $newtable->increments('id');
-            $newtable->string('artist');
-            $newtable->string('title',500);
-            $newtable->text('description');
-            $newtable->date('created');
-            $newtable->boolean('alumni');
-            $newtable->timestamps();
+            $newtable->integer('tripid')->unique();
+            $newtable->integer('eventid')->unique();
         });
-
     }
 
     /**
@@ -32,6 +26,6 @@ class CreateArt extends Migration
      */
     public function down()
     {
-        Schema::drop('art2');
+        Schema::drop('eventTrip');
     }
 }
