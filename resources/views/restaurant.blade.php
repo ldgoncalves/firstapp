@@ -8,6 +8,12 @@
     </header>
 
     <section class="custom-container">
+
+        <ol class="breadcrumb">
+            <li><a href="home">Home</a></li>
+            <li class="active">Where to Eat</li>
+        </ol>
+
         <?php
         foreach($restaurants as $restaurant) {
             echo '<div class="listing">';
@@ -17,11 +23,11 @@
             echo '<p> Phone: ' . $restaurant->restaurantsPhone . '</p>';
             echo '<p> <a href="'. $restaurant->restaurantsWebsite . '" target="_blank">Website</a></p>';
             echo '<p> Description: ' . $restaurant->description . '</p>';
-            echo '<button><a href="/add-to-trip/restaurant/' . $restaurant->id.'">Add to Trip</a></button>';
+            echo '<a href="/add-to-trip/restaurant/' . $restaurant->id.'"><button>Add to Trip</button></a>';
             echo '</div>';
         }
         ?>
-            <p class="back-top"><a href="#app-layout">Back to Top</a></p>
+            <p class="back-top"><a href="{{url('#brand')}}">Back to Top</a></p>
     </section>
 
 

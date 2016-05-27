@@ -21,15 +21,15 @@ class QueryController extends Controller
         $searchFor = Input::get('query');
 
         $hotels = Hotel::where('hotelName', 'LIKE', '%'.$searchFor.'%')->get();
-        $restaurants = Restaurant::where('restaurantsName', 'LIKE', '%'.$searchFor.'%')->get();
-        $thingsToDo = thingsToDo::where('thingstodoName', 'LIKE', '%'.$searchFor.'%')->get();
-        $events = Event::where('eventName', 'LIKE', '%'.$searchFor.'%')->get();
+        $restaurants = Restaurant::where('description', 'LIKE', '%'.$searchFor.'%')->get();
+        $thingsToDo = Thingstodo::where('description', 'LIKE', '%'.$searchFor.'%')->get();
+        $events = Event::where('description', 'LIKE', '%'.$searchFor.'%')->get();
         $shopping = Shopping::where('shoppingName', 'LIKE', '%'.$searchFor.'%')->get();
 
         $result = array(
             'hotels' => $hotels,
             'restaurants' => $restaurants,
-            'thingsToDo' => $thingsToDo,
+            'thingstodos' => $thingsToDo,
             'events' => $events,
             'shopping' => $shopping
         );

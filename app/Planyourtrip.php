@@ -12,5 +12,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Planyourtrip extends Model
 {
-
+//    protected $dates = ['start_date', 'end_date'];
 }
+

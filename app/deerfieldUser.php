@@ -8,17 +8,22 @@
 
 namespace App;
 
+
 use Illuminate\Foundation\Auth\User as Authenticatable;
+
 
 class deerfieldUser extends Authenticatable
 {
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+    protected $table = 'deerfieldUsers';
+
     protected $fillable = [
-        'firstname', 'lastname', 'email', 'password',
+        'firstname', 'lastname', 'email', 'username', 'password',
     ];
 
     /**
@@ -30,5 +35,5 @@ class deerfieldUser extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public $table = 'deerfieldUsers';
+
 }

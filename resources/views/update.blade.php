@@ -1,42 +1,45 @@
 @extends('layouts.app')
 @section('content')
 
+    <header class="jumbotron">
+        <div class="container hero">
+            <h1>Dates of Travel</h1>
+            <p>Update your dates of travel</p>
+        </div>
+    </header>
 
-{{--<form>--}}
-    {{--Dates of travel:--}}
-    {{--<input type="date" name="start-date"> ---}}
-    {{--<input type="date" name="end-date">--}}
-    {{--<input type="submit">--}}
-{{--</form>--}}
+    <section class="custom-container">
 
-<h1>Dates of Travel</h1>
+        <ol class="breadcrumb">
+            <li><a href="{{url('home')}}">Home</a></li>
+            <li><a href="{{url('hotel')}}">Where to Stay</a></li>
+            <li><a href="{{url('restaurant')}}">Where to Eat</a></li>
+            <li><a href="{{url('thingstodo')}}">Things to Do</a></li>
+            <li><a href="{{url('events')}}">Events</a></li>
+            <li><a href="{{url('shopping')}}">Shopping</a></li>
+            <li><a href="{{url('plan-trip')}}">Plan Your Trip</a></li>
+            <li class="active">Update Dates</li>
+        </ol>
+        <div class="container" style="width:50%; padding-top: 30px;">
 
-<p>Update your dates of travel</p>
+        {{ Form::open(array('url' => '/update-dates/update/' . $planyourtrip->id, 'method' => 'PUT')) }}
 
-{{--{{ HTML::ul($errors->all()) }}--}}
+        <div class="form-group">
+            {{ Form::label('start_date', 'Start Date') }}
+            {{ Form::text('start_date', $planyourtrip->start_date, array('class' => 'form-control tripdatepicker' )) }}
+        </div>
 
-{{--<form class="form-horizontal" role="form" method="POST" action="{{ url('/update-dates/update/' . $planyourtrip->id) }}">--}}
-    {{--{!! csrf_field() !!}--}}
+        <div class="form-group">
+            {{ Form::label('end_date', 'End Date') }}
+            {{ Form::text('end_date', $planyourtrip->end_date, array('class' => 'form-control tripdatepicker')) }}
+        </div>
 
+        {{ Form::submit('Update', array('class' => 'btn btn-primary')) }}
 
-{{--</form>--}}
+        {{ Form::close() }}
 
-{{ Form::open(array('url' => '/update-dates/update/' . $planyourtrip->id, 'method' => 'PUT')) }}
-
-<div class="form-group">
-    {{ Form::label('start_date', 'Start Date') }}
-    {{ Form::text('start_date', $planyourtrip->start_date, array('class' => 'form-control tripdatepicker' )) }}
-</div>
-
-<div class="form-group">
-    {{ Form::label('end_date', 'End Date') }}
-    {{ Form::text('end_date', $planyourtrip->end_date, array('class' => 'form-control tripdatepicker')) }}
-</div>
-
-{{ Form::submit('Update', array('class' => 'btn btn-primary')) }}
-
-{{ Form::close() }}
+        </div>
 
 
-
+</section>
 @endsection

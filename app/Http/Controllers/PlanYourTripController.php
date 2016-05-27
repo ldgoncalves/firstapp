@@ -5,7 +5,6 @@
  * Date: 5/20/16
  * Time: 12:08 AM
  */
-
 namespace App\Http\Controllers;
 use App\Planyourtrip;
 use App\HotelTrip;
@@ -13,7 +12,11 @@ use App\RestaurantTrip;
 use App\ThingstodoTrip;
 use App\EventTrip;
 use App\ShoppingTrip;
-
+use App\Hotel;
+use App\Restaurant;
+use App\Thingstodo;
+use App\Event;
+use App\Shopping;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
@@ -149,6 +152,45 @@ class PlanYourTripController extends Controller
         return view('plan-trip',['items'=>$items]);
     }
 
+    /* More Information from list */
+
+    public function moreInfoFromHotel ($id){
+
+            $moreInfoHotel = Hotel::where('id', '=', $id)->first();
+
+        return view('moreinfo-from-trip')->with('hotel', $moreInfoHotel);
+
+    }
+
+    public function moreInfoFromRestaurant ($id){
+
+            $moreInfoRestaurant = Restaurant::where('id', '=', $id)->first();
+
+        return view('moreinfo-from-trip')->with('restaurant', $moreInfoRestaurant);
+    }
+
+    public function moreInfoFromThingstodo ($id){
+
+        $moreInfoThingstodo = Thingstodo::where('id', '=', $id)->first();
+
+        return view('moreinfo-from-trip')->with('thingstodo', $moreInfoThingstodo);
+    }
+
+    public function moreInfoFromEvent ($id){
+
+        $moreInfoEvent = Event::where('id', '=', $id)->first();
+
+        return view('moreinfo-from-trip')->with('event', $moreInfoEvent);
+    }
+
+    public function moreInfoFromShopping ($id){
+
+       $moreInfoShopping= Shopping::where('id', '=', $id)->first();
+
+        return view('moreinfo-from-trip')->with('shopping', $moreInfoShopping);
+    }
+
+
     /* Remove item from list */
 
     public function removeHotelFromTrip ($hotelTripId){
@@ -203,34 +245,12 @@ class PlanYourTripController extends Controller
     {
         $data = Input::all();
 
-        $startDate = date("Y-m-d H:i:s", strtotime($data['start_date']));
-        $endDate = date("Y-m-d H:i:s", strtotime($data['end_date']));
+        $startDate = date("Y-m-d", strtotime($data['start_date']));
+        $endDate = date("Y-m-d", strtotime($data['end_date']));
         DB::table('planyourtrips')->where('id', '=', $tripId)->update(['start_date' => $startDate, 'end_date' => $endDate]);
 
         return redirect('plan-trip');
 
-
-//        // validate
-//        $rules = array(
-//            'start_date'       => 'required',
-//            'end_date'      => 'required'
-//        );
-
-        //$validator = Validator::make(Input::all(), $rules);
-
-//
-//        //if ($validator->fails()) {
-//            return Redirect::to('plan-trip/' . $id . '/update')
-//                ->withErrors($validator);
-////                ->withInput(Input::except('password'));
-//        //} else {
-//            // store code here
-//
-//
-//            // redirect
-//            //Session::flash('message', 'Successfully updated dates!');
-//
-//        }
 
 
     }

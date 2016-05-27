@@ -1,7 +1,16 @@
 @extends('layouts.app')
 
+@section('title', '| Login')
+@if (Session::has ('warning'))
+
+
+        <div class="alert alert-warning"><em> {!! session('warning') !!}</em></div>
+        @endif
+
+
+
 @section('content')
-<div class="container">
+<div class="container-fluid login">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -63,4 +72,9 @@
         </div>
     </div>
 </div>
+
 @endsection
+
+
+
+

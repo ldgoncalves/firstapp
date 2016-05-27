@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Support\Facades\Input;
-
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,7 +31,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new authentication controller instance.
@@ -44,6 +43,23 @@ class AuthController extends Controller
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'firstname' => 'required|max:255',
+            'lastname' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:deerfieldUsers',
+            'username' => 'required|max:255|unique:deerfieldUsers',
+            'password' => 'required|min:6|confirmed',
+        ]);
+    }
+
 
     public function get_register() {
         return view('auth/register');
@@ -53,16 +69,24 @@ class AuthController extends Controller
         return view('auth/login');
     }
 
-    public function register()
+    public function create(array $data)
     {
-        $user = new deerfieldUser;
-        $user->firstname = Input::get('firstname');
-        $user->lastname = Input::get('lastname');
-        $user->email = Input::get('email');
-        $user->username = Input::get('username');
-        $user->password = Hash::make(Input::get('password'));
-        $user->save();
-        return redirect('/');
+        return deerfieldUser::create([
+            'firstname' => $data['firstname'],
+            'lastname' => $data['lastname'],
+            'email' => $data['email'],
+            'username' => $data['username'],
+            'password' => bcrypt($data['password']),
+        ]);
+
+//        $user = new deerfieldUser;
+//        $user->firstname = Input::get('firstname');
+//        $user->lastname = Input::get('lastname');
+//        $user->email = Input::get('email');
+//        $user->username = Input::get('username');
+//        $user->password = Hash::make(Input::get('password'));
+//        $user->save();
+//        return redirect('home');
     }
 
     public function login(){
@@ -76,7 +100,7 @@ class AuthController extends Controller
     public function logout(){
         Auth::logout();
 
-        return redirect('/');
+        return redirect('home');
     }
 }
 

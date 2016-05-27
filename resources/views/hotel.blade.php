@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
 
     <header class="jumbotron">
@@ -10,6 +11,11 @@
 
     <section class="custom-container">
 
+        <ol class="breadcrumb">
+            <li><a href="home">Home</a></li>
+            <li class="active">Where to Stay</li>
+        </ol>
+
         <?php
         foreach($hotels as $hotel) {
             echo '<div class="listing">';
@@ -19,17 +25,14 @@
             echo '<p> Phone: ' . $hotel->hotelPhone . '</p>';
             echo '<p> <a href="'. $hotel->hotelWebsite . '" target="_blank">Website</a></p>';
             echo '<p> Description: ' . $hotel->description . '</p>';
-            echo '<button><a href="/add-to-trip/hotel/' . $hotel->id.'">Add to Trip</a></button>';
+            echo '<a href="/add-to-trip/hotel/' . $hotel->id.'"><button>Add to Trip</button></a>';
             echo '</div>';
         }
 
         ?>
 
-        <p class="back-top"><a href="#app-layout">Back to Top</a></p>
+        <p class="back-top"><a href="{{url('#brand')}}">Back to Top</a></p>
 
     </section>
-
-
-
 
 @endsection

@@ -9,12 +9,15 @@
 namespace App\Http\Controllers;
 
 use App\Hotel;
+use Illuminate\Support\Facades\DB;
 
 class HotelController extends Controller
 {
-    public function index(){
-        $hotels = Hotel::all();
 
+
+    public function index(){
+
+        $hotels = Hotel::all();
         return view('hotel')->with('hotels', $hotels);
     }
 }
